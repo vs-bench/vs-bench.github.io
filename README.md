@@ -1,2 +1,2 @@
 # vs-bench.github.io
-Project Page for VS-Bench
+This is the project website for the paper "VS-Bench: Evaluating VLMs for Strategic Reasoning and Decision-Making in Multi-Agent Environments".
