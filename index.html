@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>VS-Bench: Evaluating VLMs for Strategic Reasoning and Decision-Making in Multi-Agent Environments</title>
+  <title>VS-Bench: Evaluating VLMs for Strategic Abilities in Multi-Agent Environments</title>
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,9 +62,8 @@
           <div class="column has-text-centered">
 
 
-            <h1 class="title is-1 publication-title">VS-Bench: Evaluating VLMs for Strategic Reasoning and Decision-Making in Multi-Agent Environments</h1>
+            <h1 class="title is-1 publication-title">VS-Bench: Evaluating VLMs for Strategic Abilities in Multi-Agent Environments</h1>
 
-            <!-- Author list -->
             <div class="is-size-5 publication-authors">
               <span class="author-block">
                 <a href="https://nicsefc.ee.tsinghua.edu.cn/people/ZelaiXu" target="_blank">Zelai Xu</a><sup>1*</sup>,
@@ -79,27 +78,36 @@
                 <a href="" target="_blank">Huining Yuan</a><sup>1</sup>,
               </span><br>
               <span class="author-block">
+                <a href="" target="_blank">Mo Guang</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="" target="_blank">Kaiwen Long</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
                 <a href="https://chen-xinlei.com/" target="_blank">Xinlei Chen</a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="https://jxwuyi.weebly.com/" target="_blank">Yi Wu</a><sup>1,3</sup>,
+                <a href="https://jxwuyi.weebly.com/" target="_blank">Yi Wu</a><sup>1,4</sup>,
               </span>
               <span class="author-block">
-                <a href="https://nicsefc.ee.tsinghua.edu.cn/people/ChaoYu" target="_blank">Chao Yu</a><sup>1,4</sup>,
+                <a href="https://nicsefc.ee.tsinghua.edu.cn/people/ChaoYu" target="_blank">Chao Yu</a><sup>1,5†</sup>,
               </span>
               <span class="author-block">
-                <a href="https://nicsefc.ee.tsinghua.edu.cn/people/YuWang" target="_blank">Yu Wang</a><sup>1</sup>
-              </span><br>
+                <a href="https://nicsefc.ee.tsinghua.edu.cn/people/YuWang" target="_blank">Yu Wang</a><sup>1†</sup>
+              </span>
             </div>
+            
             <div class="is-size-5 publication-authors" style="margin-top:1em;">
               <span class="author-block"><sup>1</sup>Tsinghua University,</span>
-              <span class="author-block"><sup>2</sup>University of Science and Technology of China,</span>
-              <br>
-              <span class="author-block"><sup>3</sup>Shanghai Qi Zhi Institute,</span>
-              <span class="author-block"><sup>4</sup>Beijing Zhongguancun Academy</span>
+              <span class="author-block"><sup>2</sup>University of Science and Technology of China,</span><br>
+              <span class="author-block"><sup>3</sup>Li Auto Inc.,</span>
+              <span class="author-block"><sup>4</sup>Shanghai Qi Zhi Institute,</span>
+              <span class="author-block"><sup>5</sup>Zhongguancun Academy</span>
             </div>
+            
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>*</sup>Equal contribution</span>
+              <span class="author-block"><sup>*</sup>Equal contribution.</span><br>
+              <span class="author-block"><sup>†</sup>Corresponding authors.</span>
             </div>
 
             <!-- Links -->
@@ -146,7 +154,7 @@
       <div class="container is-max-desktop">
         <div class="has-text-centered">
           <figure class="table-figure" style="width: 80%; margin-left: auto; margin-right: auto;">
-            <img class="figure-image" src="website/img/overview.jpg" alt="Figure 1. Overview of VS-Bench." />
+            <img class="figure-image" src="website/img/overview.png" alt="Figure 1. Overview of VS-Bench." />
             <figcaption class="figure-caption">
               <b>Figure 1:</b> Overview of VS-Bench, a multimodal benchmark for evaluating VLMs in multi-agent environments.
             </figcaption>
@@ -161,13 +169,13 @@
         <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
           <p style="text-align:justify; color:rgb(31, 30, 30);">
             Recent advancements in Vision Language Models (VLMs) have expanded their capabilities to interactive agent tasks, yet existing benchmarks remain limited to single-agent or text-only environments.
-            In contrast, real-world scenarios often involve multiple agents interacting within rich visual and linguistic contexts, posing challenges with both multimodal observations and strategic interactions.
-            To bridge this gap, we introduce <strong>Visual Strategic Bench (VS-Bench)</strong>, a multimodal benchmark that evaluates VLMs for strategic reasoning and decision-making in multi-agent environments.
-            VS-Bench comprises eight vision-grounded environments spanning cooperative, competitive, and mixed-motive interactions, designed to assess agents' ability to predict others' future moves and optimize for long-term objectives.
-            We consider two complementary evaluation dimensions, including offline evaluation of <strong>strategic reasoning</strong> by next-action prediction accuracy and online evaluation of <strong>decision-making</strong> by normalized episode return.
-            Extensive experiments of fourteen leading VLMs reveal a significant gap between current models and optimal performance, with the best models attaining 47.8% prediction accuracy and 24.3% normalized return.
-            We further conduct in-depth analyses on multimodal observations, test-time scaling, social behaviors, and failure cases of VLM agents. 
-            By standardizing the evaluation and highlighting the limitation of existing models, we envision VS-Bench as a foundation for future research on strategic multimodal agents.
+            In contrast, real-world scenarios often involve multiple agents interacting within rich visual and textual contexts, posing challenges with both multimodal observations and strategic interactions.
+            To bridge this gap, we introduce <strong>Visual Strategic Bench (VS-Bench)</strong>, a multimodal benchmark that evaluates VLMs for strategic abilities in multi-agent environments.
+            VS-Bench comprises ten vision-grounded environments that cover cooperative, competitive, and mixed-motive interactions.
+            The performance of VLM agents is evaluated across three dimensions: <strong>perception</strong> measured by element recognition accuracy; <strong>strategic reasoning</strong> measured by next-action prediction accuracy; and <strong>decision-making</strong> measured by normalized episode return. 
+            Extensive experiments on fifteen leading VLMs show that, although current models exhibit strong perception abilities, there remains a significant gap to optimal performance in reasoning and decision-making, with the best-performing model attaining 46.6% prediction accuracy and 31.4% normalized return.
+            We further analyze the key factors influencing performance, conduct human experiments, and examine failure modes to provide a deeper understanding of VLMs' strategic abilities.
+            By standardizing the evaluation and highlighting the limitations of existing models, we envision VS-Bench as a foundation for future research on strategic multimodal agents.
           </p>
         </div>
       </div>
@@ -178,7 +186,7 @@
           <div class="column" style="width: 40%;">
             <div class="has-text-centered">
               <figure class="table-figure">
-                <img class="figure-image" src="website/img/tldr_reasoning.jpg" 
+                <img class="figure-image" src="website/img/tldr_reasoning.png" 
                     alt="Figure 2. Strategic Reasoning Results" />
                 <figcaption class="figure-caption">
                   <b>Figure 2:</b> Evaluation results on strategic reasoning.
@@ -190,7 +198,7 @@
           <div class="column" style="width: 40%;">
             <div class="has-text-centered">
               <figure class="table-figure">
-                <img class="figure-image" src="website/img/tldr_decision.jpg"
+                <img class="figure-image" src="website/img/tldr_decision.png"
                     alt="Figure 3. Decision Making Results" />
                 <figcaption class="figure-caption">
                   <b>Figure 3:</b> Evaluation results on decision-making.
@@ -218,7 +226,7 @@
                   <source src="website/videos/hanabi(player0).mp4" type="video/mp4">
                 </video>
               </div>
-              <p style="text-align:center; font-size:1.3em; margin-top:0.7rem; margin-bottom:1rem; font-weight:bold;">
+              <p style="text-align:center; font-size:1.3em; margin-top:0.7rem; margin-bottom:-1.5rem; font-weight:bold;">
                 <i>Hanabi (Player 0)</i>
               </p>
             </div>
@@ -231,8 +239,23 @@
                   <source src="website/videos/hanabi(player1).mp4" type="video/mp4">
                 </video>
               </div>
-              <p style="text-align:center; font-size:1.3em; margin-top:0.7rem; margin-bottom:1rem; font-weight:bold;">
+              <p style="text-align:center; font-size:1.3em; margin-top:0.7rem; margin-bottom:-1.5rem; font-weight:bold;">
                 <i>Hanabi (Player 1)</i>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered is-multiline" style="width: 80%; margin: 0 auto;">
+          <div class="column">
+            <div class="has-text-centered">
+              <div class="video-outer-wrapper">
+                <video autoplay muted loop playsinline controls width="90%" class="game-video-inner">
+                  <source src="website/videos/overcooked.mp4" type="video/mp4">
+                </video>
+              </div>
+              <p style="text-align:center; font-size:1.3em; margin-top:-6.0rem; margin-bottom:1rem; font-weight:bold;">
+                <i>Overcooked</i>
               </p>
             </div>
           </div>
@@ -241,11 +264,11 @@
             <div class="has-text-centered">
               <div class="video-outer-wrapper">
                 <video autoplay muted loop playsinline controls width="90%" class="game-video-inner">
-                  <source src="website/videos/overcooked.mp4" type="video/mp4">
+                  <source src="website/videos/kaz.mp4" type="video/mp4">
                 </video>
               </div>
-              <p style="text-align:center; font-size:1.3em; margin-top:0.7rem; margin-bottom:1rem; font-weight:bold;">
-                <i>Overcooked</i>
+              <p style="text-align:center; font-size:1.3em; margin-top:-6.0rem; margin-bottom:1rem; font-weight:bold;">
+                <i>KAZ</i>
               </p>
             </div>
           </div>
@@ -281,6 +304,8 @@
             </div>
           </div>
           
+
+        <div class="columns is-centered is-multiline" style="width: 80%; margin: 0 auto;">
           <div class="column">
             <div class="has-text-centered">
               <div class="video-outer-wrapper">
@@ -290,6 +315,19 @@
               </div>
               <p style="text-align:center; font-size:1.3em; margin-top:0.7rem; margin-bottom:1rem; font-weight:bold;">
                 <i>Atari Pong</i>
+              </p>
+            </div>
+          </div>
+          
+          <div class="column">
+            <div class="has-text-centered">
+              <div class="video-outer-wrapper">
+                <video autoplay muted loop playsinline controls width="90%" class="game-video-inner">
+                  <source src="website/videos/mpe.mp4" type="video/mp4">
+                </video>
+              </div>
+              <p style="text-align:center; font-size:1.3em; margin-top:0.7rem; margin-bottom:1rem; font-weight:bold;">
+                <i>MPE</i>
               </p>
             </div>
           </div>
@@ -342,13 +380,16 @@
   <!-- Benchmark Results Section -->
   <section class="section" id="benchmark results" style="padding-top:1.5rem;">
       <h2 class="title is-3" style="text-align:center; margin-top:-0.5rem; margin-bottom:2rem;">Benchmark Results</h2>
-      <h3 class="title is-4" style="text-align:center; margin-top:1rem; margin-bottom:2rem;">Strategic Reasoning</h3>
+      <!-- Perception Results -->
+      <h3 class="title is-4" style="text-align:center; margin-top:1rem; margin-bottom:2rem;">Perception</h3>
       <div class="container is-max-desktop">
         <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
           <p style="text-align:justify; color:rgb(31, 30, 30);">
-            Strategic reasoning is the theory-of-mind ability to infer the hidden beliefs, desires, and intentions of other agents.
-            This requires agents to think from others' perspectives and answer the question: <strong>What would other agents do in the next steps?</strong>
-            Strategic reasoning is crucial in multi-agent environments because an agent's reward function depends not only on its own action, but also on others' actions.
+            <strong>Existing VLMs show competent perception ability.</strong>
+            The evaluation results in Table 1 show that current VLMs achieve high performance in perception of key elements. 
+            All models achieve at least 67.8% overall accuracy and the best model <span style="font-family: monospace, 'Courier New', Courier;">o3</span> attains 84.9% overall accuracy.
+            Reasoning models do not show a significant advantage over chat models and open-source models. 
+            These results show that all VLMs demonstrate adequate perception ability for subsequent strategic reasoning and decision-making in multi-agent environment.
           </p>
         </div>
       </div>
@@ -360,16 +401,18 @@
               <tr>
                 <th rowspan="2">Models</th>
                 <th rowspan="2">Overall</th>
-                <th colspan="2">Cooperative</th>
-                <th colspan="3">Competitive</th>
+                <th colspan="3">Cooperative</th>
+                <th colspan="4">Competitive</th>
                 <th colspan="3">Mixed-Motive</th>
               </tr>
               <tr>
                 <th><i>Hanabi</i></th>
                 <th><i>Overcooked</i></th>
+                <th><i>KAZ</i></th>
                 <th><i>Board</i></th>
                 <th><i>Poker</i></th>
                 <th><i>Pong</i></th>
+                <th><i>MPE</i></th>
                 <th><i>Dilemma</i></th>
                 <th><i>Hunt</i></th>
                 <th><i>Battle</i></th>
@@ -387,183 +430,522 @@
                 <td>100.0</td>
                 <td>100.0</td>
                 <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
               </tr>
               <tr>
-                <td>o4-mini</td>
-                <td class="cell-first">47.8</td>
-                <td class="cell-first">58.3</td>
-                <td class="cell-first">31.8</td>
-                <td class="cell-first">26.8</td>
-                <td class="cell-third">63.5</td>
-                <td class="cell-third">43.5</td>
-                <td class="cell-second">62.8</td>
-                <td class="cell-second">43.8</td>
-                <td class="cell-second">52.5</td>
+                <td>o3</td>
+                <td class="cell-first">84.9</td>
+                <td>79.7</td>
+                <td class="cell-second">69.8</td>
+                <td class="cell-third">90.1</td>
+                <td class="cell-third">97.2</td>
+                <td>99.1</td>
+                <td>64.6</td>
+                <td class="cell-second">97.5</td>
+                <td class="cell-second">85.5</td>
+                <td class="cell-third">80.2</td>
+                <td class="cell-third">85.4</td>
               </tr>
               <tr>
-                <td>gemini-2.5-flash</td>
-                <td class="cell-second">45.5</td>
-                <td class="cell-third">37.0</td>
-                <td>21.0</td>
-                <td>23.3</td>
-                <td class="cell-second">65.0</td>
-                <td>41.3</td>
-                <td class="cell-first">63.5</td>
-                <td class="cell-first">50.3</td>
-                <td class="cell-first">62.8</td>
+                <td>gemini-2.5-pro</td>
+                <td class="cell-third">83.4</td>
+                <td class="cell-second">79.9</td>
+                <td>54.5</td>
+                <td>88.6</td>
+                <td class="cell-first">98.5</td>
+                <td class="cell-first">100.0</td>
+                <td class="cell-first">86.5</td>
+                <td>96.5</td>
+                <td>76.4</td>
+                <td>73.0</td>
+                <td>79.9</td>
               </tr>
               <tr>
                 <td>claude-3-7-sonnet</td>
-                <td class="cell-third">42.4</td>
-                <td class="cell-second">39.0</td>
-                <td>26.0</td>
-                <td class="cell-second">24.3</td>
-                <td class="cell-first">65.5</td>
-                <td class="cell-first">44.8</td>
-                <td class="cell-third">53.8</td>
-                <td>42.5</td>
-                <td class="cell-third">43.3</td>
+                <td>81.1</td>
+                <td>73.0</td>
+                <td>62.8</td>
+                <td class="cell-first">92.9</td>
+                <td>75.2</td>
+                <td>99.5</td>
+                <td>69.4</td>
+                <td>89.8</td>
+                <td class="cell-third">82.6</td>
+                <td>79.7</td>
+                <td class="cell-second">85.7</td>
+              </tr>
+              <tr>
+                <td>ui-tars-1-5</td>
+                <td>81.5</td>
+                <td>75.4</td>
+                <td>59.8</td>
+                <td>83.0</td>
+                <td class="cell-second">98.0</td>
+                <td class="cell-first">100.0</td>
+                <td>74.4</td>
+                <td>92.2</td>
+                <td>76.0</td>
+                <td>74.9</td>
+                <td>81.0</td>
               </tr>
               <tr>
                 <td>doubao-1-5-thinking-pro</td>
-                <td>36.6</td>
+                <td>74.7</td>
+                <td>42.2</td>
+                <td>52.4</td>
+                <td>77.5</td>
+                <td>91.0</td>
+                <td>98.6</td>
+                <td>66.0</td>
+                <td>87.2</td>
+                <td>76.7</td>
+                <td>74.9</td>
+                <td>80.0</td>
+              </tr>
+              <tr class="midrule-below">
+                <td>qvq-max</td>
+                <td>74.5</td>
+                <td>75.1</td>
+                <td>63.6</td>
+                <td>74.6</td>
+                <td>83.3</td>
+                <td>95.2</td>
+                <td>50.7</td>
+                <td>83.6</td>
+                <td>69.5</td>
+                <td>72.0</td>
+                <td>77.7</td>
+              </tr>
+              <tr>
+                <td>gemini-2.5 w/o thinking</td>
+                <td class="cell-second">84.5</td>
+                <td class="cell-second">79.9</td>
+                <td>38.8</td>
+                <td>82.8</td>
+                <td>88.2</td>
+                <td>97.2</td>
+                <td class="cell-second">84.3</td>
+                <td class="cell-third">97.3</td>
+                <td class="cell-first">92.5</td>
+                <td class="cell-first">93.1</td>
+                <td class="cell-first">90.8</td>
+              </tr>
+              <tr>
+                <td>claude-3-7 w/o thinking</td>
+                <td>80.5</td>
+                <td>75.9</td>
+                <td>59.7</td>
+                <td>85.6</td>
+                <td>79.0</td>
+                <td>99.6</td>
+                <td>70.1</td>
+                <td>90.6</td>
+                <td>81.8</td>
+                <td class="cell-second">80.4</td>
+                <td>82.8</td>
+              </tr>
+              <tr>
+                <td>gpt-4.1</td>
+                <td>80.3</td>
+                <td>72.1</td>
+                <td>62.0</td>
+                <td class="cell-second">92.6</td>
+                <td>67.0</td>
+                <td class="cell-first">100.0</td>
+                <td>75.4</td>
+                <td class="cell-first">98.9</td>
+                <td>76.7</td>
+                <td>76.8</td>
+                <td>81.2</td>
+              </tr>
+              <tr>
+                <td>qwen-vl-max</td>
+                <td>80.2</td>
+                <td>76.1</td>
+                <td class="cell-third">68.2</td>
+                <td>85.2</td>
+                <td>81.2</td>
+                <td>99.2</td>
+                <td>69.0</td>
+                <td>88.2</td>
+                <td>78.4</td>
+                <td>76.4</td>
+                <td>80.6</td>
+              </tr>
+              <tr>
+                <td>doubao-1-5-vision-pro</td>
+                <td>77.6</td>
+                <td class="cell-first">80.0</td>
+                <td>33.1</td>
+                <td>67.8</td>
+                <td>89.3</td>
+                <td class="cell-first">100.0</td>
+                <td class="cell-third">77.7</td>
+                <td>90.8</td>
+                <td>78.0</td>
+                <td>77.6</td>
+                <td>81.2</td>
+              </tr>
+              <tr class="midrule-below">
+                <td>grok-2-vision</td>
+                <td>70.2</td>
+                <td>75.2</td>
+                <td>46.8</td>
+                <td>59.8</td>
+                <td>80.3</td>
+                <td>59.5</td>
+                <td>71.0</td>
+                <td>78.7</td>
+                <td>76.4</td>
+                <td>73.3</td>
+                <td>81.0</td>
+              </tr>
+              <tr>
+                <td>Qwen2.5-VL-72B-Ins.</td>
+                <td>80.3</td>
+                <td>76.0</td>
+                <td class="cell-first">72.9</td>
+                <td>85.5</td>
+                <td>75.1</td>
+                <td class="cell-first">100.0</td>
+                <td>65.2</td>
+                <td>87.7</td>
+                <td>79.8</td>
+                <td>79.0</td>
+                <td>82.4</td>
+              </tr>
+              <tr>
+                <td>InternVL3-78B</td>
+                <td>74.1</td>
+                <td>74.6</td>
+                <td>43.6</td>
+                <td>63.8</td>
+                <td>64.3</td>
+                <td>99.2</td>
+                <td>66.7</td>
+                <td>89.2</td>
+                <td>81.1</td>
+                <td>76.7</td>
+                <td>81.8</td>
+              </tr>
+              <tr class="midrule-below">
+                <td>Llama-3.2-90B-Vision-Ins.</td>
+                <td>67.8</td>
+                <td>30.7</td>
+                <td>58.6</td>
+                <td>87.1</td>
+                <td>59.7</td>
+                <td>81.6</td>
+                <td>59.5</td>
+                <td>94.3</td>
+                <td>68.5</td>
+                <td>66.0</td>
+                <td>72.4</td>
+              </tr>
+              <tr>
+                <td>Random</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="text-align:center; margin-top:1em; font-size:0.85em; color:#555;">
+            <b>Table 3:</b> Strategic reasoning evaluation results. For each environment, the 
+            <span style="background-color:#98cc70; padding:0 3px;">first</span>, 
+            <span style="background-color:#dfe573; padding:0 3px;">second</span>, and 
+            <span style="background-color:#ffebb2; padding:0 3px;">third</span> best results are highlighted in green.
+          </p>
+        </div>
+
+        <!-- <div style="width: 70%; border: 1px solid #ccc; background-color: #f2f2f2; padding-top: 12px; padding-right: 15px; padding-bottom: 0px; padding-left: 15px; border-radius: 10px; font-size: 1.0em; margin: 0 auto; line-height: 1.55; text-align: center;">
+          <p>Existing VLMs show competent perception ability.</p>
+        </div> -->
+      </div>
+      <!-- Strategic Reasoning Results -->
+      <h3 class="title is-4" style="text-align:center; margin-top:1rem; margin-bottom:2rem;">Strategic Reasoning</h3>
+      <div class="container is-max-desktop">
+        <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
+          <p style="text-align:justify; color:rgb(31, 30, 30);">
+            <strong>Existing VLMs exhibit preliminary strategic reasoning ability but are still far from oracle performance.</strong>
+            The evaluation results in Figure 2 and Table 2 show that current VLMs show basic strategic reasoning ability by surpassing random agents in overall prediction accuracy, yet they still lag behind the oracle results by a noticeable margin.
+            Most models perform better than random guesses in at least eight of the ten games, demonstrating non-trivial theory-of-mind capability in multi-agent environments.
+            In general, reasoning models achieve better results than chat models and open-source models, with the best-performing model <span style="font-family: monospace, 'Courier New', Courier;">o3</span> attaining an overall accuracy of 46.6% and ranking first in six environments.
+            Notably, the three leading open-source models achieve an average overall accuracy of 29.2%, which is comparable to commercial chat models with a 30.3% average overall accuracy.
+            However, even these most capable models attain less than 50% overall accuracy, and some even fail to outperform random.
+            This deficit is especially pronounced in <em>Overcooked</em>, <em>Atari Pong</em>, and <em>Monster Hunt</em>, which are all adapted from video games.
+          </p>
+        </div>
+      </div>
+
+      <div class="container is-max-desktop">
+        <div class="table-container" style="width: 80%; margin: 0 auto;">
+          <table class="table academic-table"> 
+            <thead>
+              <tr>
+                <th rowspan="2">Models</th>
+                <th rowspan="2">Overall</th>
+                <th colspan="3">Cooperative</th>
+                <th colspan="4">Competitive</th>
+                <th colspan="3">Mixed-Motive</th>
+              </tr>
+              <tr>
+                <th><i>Hanabi</i></th>
+                <th><i>Overcooked</i></th>
+                <th><i>KAZ</i></th>
+                <th><i>Board</i></th>
+                <th><i>Poker</i></th>
+                <th><i>Pong</i></th>
+                <th><i>MPE</i></th>
+                <th><i>Dilemma</i></th>
+                <th><i>Hunt</i></th>
+                <th><i>Battle</i></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="midrule-below">
+                <td>Oracle</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+              </tr>
+              <tr>
+                <td>o3</td>
+                <td>46.6</td>
+                <td class="cell-first">61.2</td>
+                <td class="cell-first">40.5</td>
+                <td>30.8</td>
+                <td class="cell-first">29.0</td>
+                <td class="cell-first">67.0</td>
+                <td class="cell-below">25.8</td>
+                <td>33.8</td>
+                <td class="cell-second">59.2</td>
+                <td class="cell-first">57.5</td>
+                <td class="cell-first">61.5</td>
+              </tr>
+              <tr>
+                <td>claude-3-7-sonnet</td>
+                <td>40.4</td>
+                <td class="cell-third">39.0</td>
+                <td>26.0</td>
+                <td>29.0</td>
+                <td class="cell-third">24.2</td>
+                <td>65.2</td>
+                <td class="cell-first">44.8</td>
+                <td class="cell-first">35.8</td>
+                <td class="cell-third">53.8</td>
+                <td class="cell-third">42.5</td>
+                <td>43.2</td>
+              </tr>
+              <tr>
+                <td>gemini-2.5-pro</td>
+                <td>39.6</td>
+                <td class="cell-second">51.2</td>
+                <td>22.0</td>
+                <td>28.8</td>
+                <td class="cell-second">26.8</td>
+                <td>59.8</td>
+                <td class="cell-below">24.5</td>
+                <td>35.0</td>
+                <td>52.5</td>
+                <td>35.8</td>
+                <td class="cell-second">60.0</td>
+              </tr>
+              <tr>
+                <td>ui-tars-1-5</td>
+                <td>39.0</td>
+                <td>25.5</td>
+                <td>18.2</td>
+                <td class="cell-third">38.5</td>
+                <td>23.2</td>
+                <td class="cell-second">65.8</td>
+                <td class="cell-below">30.8</td>
+                <td>33.5</td>
+                <td class="cell-first">63.0</td>
+                <td>41.5</td>
+                <td class="cell-third">50.0</td>
+              </tr>
+              <tr>
+                <td>doubao-1-5-thinking-pro</td>
+                <td>36.3</td>
                 <td>32.8</td>
-                <td>26.3</td>
+                <td>26.2</td>
+                <td>27.5</td>
                 <td>19.8</td>
-                <td>57.8</td>
-                <td class="cell-second">44.3</td>
+                <td class="cell-second">65.8</td>
+                <td class="cell-second">44.2</td>
+                <td>34.8</td>
                 <td>26.5</td>
-                <td class="cell-third">45.3</td>
+                <td class="cell-second">45.2</td>
                 <td>40.0</td>
               </tr>
               <tr class="midrule-below">
                 <td>qvq-max</td>
-                <td>30.5</td>
-                <td>32.3</td>
+                <td>30.8</td>
+                <td>32.2</td>
                 <td>19.0</td>
+                <td>24.5</td>
                 <td>21.8</td>
-                <td>59.3</td>
+                <td>63.0</td>
                 <td>37.8</td>
-                <td class="cell-below">25.3</td>
+                <td class="cell-third">35.5</td>
+                <td class="cell-below">25.2</td>
                 <td class="cell-below">21.5</td>
                 <td>27.0</td>
               </tr>
               <tr>
                 <td>gpt-4.1</td>
-                <td>36.6</td>
+                <td>36.0</td>
                 <td>23.0</td>
                 <td class="cell-second">27.0</td>
+                <td>27.8</td>
                 <td>22.5</td>
-                <td>54.0</td>
+                <td>58.2</td>
                 <td>41.5</td>
-                <td>49.9</td>
+                <td class="cell-first">35.8</td>
+                <td>49.8</td>
                 <td>36.8</td>
                 <td>38.0</td>
               </tr>
               <tr>
+                <td>qwen-vl-max</td>
+                <td>31.2</td>
+                <td>26.5</td>
+                <td>26.0</td>
+                <td class="cell-first">46.0</td>
+                <td>19.5</td>
+                <td>52.2</td>
+                <td class="cell-below">23.5</td>
+                <td>31.0</td>
+                <td>26.2</td>
+                <td class="cell-below">23.5</td>
+                <td>37.2</td>
+              </tr>
+              <tr>
                 <td>doubao-1-5-vision-pro</td>
-                <td>30.8</td>
+                <td>30.1</td>
                 <td>15.0</td>
-                <td>22.3</td>
+                <td>22.2</td>
+                <td>18.5</td>
                 <td>15.8</td>
-                <td>53.8</td>
-                <td class="cell-below">31.3</td>
-                <td>37.3</td>
+                <td>58.2</td>
+                <td class="cell-below">31.2</td>
+                <td>31.5</td>
+                <td>37.2</td>
                 <td>36.0</td>
                 <td>34.8</td>
               </tr>
               <tr>
-                <td>gemini-2.5 w/o thinking</td>
-                <td>29.2</td>
-                <td>21.5</td>
-                <td>19.3</td>
-                <td>14.8</td>
-                <td class="cell-below">48.5</td>
-                <td>34.0</td>
-                <td>31.8</td>
-                <td>30.5</td>
-                <td>33.8</td>
-              </tr>
-              <tr>
-                <td>qwen-vl-max</td>
-                <td>28.5</td>
-                <td>26.5</td>
-                <td>26.0</td>
-                <td>19.5</td>
-                <td class="cell-below">45.3</td>
-                <td class="cell-below">23.5</td>
-                <td>26.3</td>
-                <td class="cell-below">23.5</td>
-                <td>37.3</td>
-              </tr>
-              <tr>
                 <td>claude-3-7 w/o thinking</td>
-                <td>28.3</td>
+                <td>29.6</td>
                 <td>9.8</td>
                 <td class="cell-below">16.0</td>
+                <td>35.8</td>
                 <td>18.0</td>
-                <td>56.0</td>
-                <td>43.3</td>
+                <td>57.2</td>
+                <td class="cell-third">43.2</td>
+                <td>32.2</td>
                 <td>31.0</td>
                 <td class="cell-below">26.0</td>
                 <td>26.8</td>
               </tr>
+              <tr>
+                <td>gemini-2.5 w/o thinking</td>
+                <td>29.0</td>
+                <td>21.5</td>
+                <td>19.2</td>
+                <td>20.8</td>
+                <td>14.8</td>
+                <td>56.5</td>
+                <td>34.0</td>
+                <td>27.0</td>
+                <td>31.8</td>
+                <td>30.5</td>
+                <td>33.8</td>
+              </tr>
               <tr class="midrule-below">
                 <td>grok-2-vision</td>
-                <td>25.7</td>
+                <td>26.2</td>
                 <td>12.8</td>
-                <td>17.3</td>
+                <td>17.2</td>
+                <td>25.5</td>
                 <td>10.8</td>
-                <td>53.3</td>
+                <td>59.5</td>
                 <td class="cell-below">20.8</td>
-                <td>30.3</td>
+                <td>25.2</td>
+                <td>30.2</td>
                 <td>31.5</td>
                 <td>29.0</td>
               </tr>
               <tr>
                 <td>Qwen2.5-VL-72B-Ins.</td>
-                <td>30.4</td>
+                <td>32.2</td>
                 <td>26.8</td>
                 <td class="cell-third">26.5</td>
-                <td class="cell-third">23.8</td>
-                <td class="cell-below">45.2</td>
+                <td class="cell-second">39.5</td>
+                <td>23.8</td>
+                <td>50.8</td>
                 <td class="cell-below">27.0</td>
+                <td>34.2</td>
                 <td>30.0</td>
-                <td class="cell-below">27.3</td>
+                <td class="cell-below">27.2</td>
                 <td>36.8</td>
               </tr>
               <tr>
                 <td>InternVL3-78B</td>
-                <td>29.7</td>
-                <td>25.3</td>
+                <td>29.1</td>
+                <td>25.2</td>
                 <td>20.5</td>
+                <td>24.0</td>
                 <td>14.0</td>
-                <td class="cell-below">45.5</td>
+                <td class="cell-below">45.2</td>
                 <td>34.8</td>
+                <td>30.2</td>
                 <td>37.0</td>
                 <td>30.0</td>
-                <td>30.3</td>
+                <td>30.2</td>
               </tr>
               <tr class="midrule-below">
                 <td>Llama-3.2-90B-Vision-Ins.</td>
                 <td>26.4</td>
                 <td>20.0</td>
                 <td class="cell-below">16.5</td>
+                <td>20.8</td>
                 <td>11.8</td>
-                <td>53.3</td>
-                <td>36.3</td>
-                <td>26.3</td>
+                <td>52.8</td>
+                <td>36.2</td>
+                <td>32.8</td>
+                <td class="cell-below">22.2</td>
+                <td class="cell-below">26.2</td>
                 <td class="cell-below">25.0</td>
-                <td class="cell-below">18.8</td>
               </tr>
               <tr>
                 <td>Random</td>
-                <td>24.3</td>
+                <td>23.0</td>
                 <td>8.8</td>
                 <td>16.7</td>
-                <td>4.3</td>
+                <td>16.2</td>
+                <td>4.2</td>
                 <td>50.0</td>
                 <td>33.3</td>
+                <td>19.5</td>
                 <td>25.4</td>
                 <td>29.3</td>
                 <td>26.5</td>
@@ -579,236 +961,288 @@
           </p>
         </div>
 
-        <div style="width: 80%; border: 1px solid #ccc; background-color: #f2f2f2; padding-top: 12px; padding-right: 15px; padding-bottom: 0px; padding-left: 15px; border-radius: 10px; font-size: 1.0em; margin: 0 auto; line-height: 1.55;">
-          <p><strong style="color: rgb(13, 110, 253);">Finding 1:</strong> Existing VLMs exhibit preliminary strategic reasoning ability by outperforming random guesses, but they are still far from accurate prediction of others' next actions.</p>
-        </div>
+        <!-- <div style="width: 70%; border: 1px solid #ccc; background-color: #f2f2f2; padding-top: 12px; padding-right: 15px; padding-bottom: 0px; padding-left: 15px; border-radius: 10px; font-size: 1.0em; margin: 0 auto; line-height: 1.55; text-align: center;">
+          <p>Existing VLMs exhibit preliminary strategic reasoning ability but are still far from oracle performance.</p>
+        </div> -->
       </div>
       <!-- Decision Making Results -->
       <h3 class="title is-4" style="text-align:center; margin-top:2rem; margin-bottom:1.5rem;">Decision-Making</h3>
       <div class="container is-max-desktop">
         <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
           <p style="text-align:justify; color:rgb(31, 30, 30);">
-            Decision-making is the ability to <strong>optimize for one's long-term objectives under uncertainty</strong>.
-            This requires agents to prioritize future accumulated returns over immediate gains, adapt to non-stationary dynamics with evolving agents, and balance cooperation and competition to navigate toward favorable equilibria. 
+            <strong>Existing VLMs struggle with decision-making in multi-agent environments.</strong>
+            The evaluation results in Figure  and Table 3 show that current VLMs have limited decision-making ability in multi-agent environments, highlighting a significant gap between existing models and oracle performance.
+            As illustrated by the large swaths of red cells, four out of fifteen models' overall performance is even worse than random agents, indicating their incompetence to optimize long-term return under non-stationary, interdependent multi-agent dynamics. 
+            Although reasoning models achieve relatively better results than chat models and open-source models, even the best-performing model <span style="font-family: monospace, 'Courier New', Courier;">o3</span> only attains an overall normalized return of 31.4%, which is far behind the oracle agent.
+            Surprisingly, we observe that some open-source models can achieve comparable results to reasoning models in certain mixed-motive games like <span style="font-family: monospace, 'Courier New', Courier;">InterVL3-78B</span> in <em>Coin Dilemma</em> and <span style="font-family: monospace, 'Courier New', Courier;">Qwen2.5-VL-72B-Ins.</span> <em>in Monster Hunt</em>.
+            We also observe that the failures to outperform random agents are concentrated on video games like <em>Overcooked</em>, <em>KAZ</em>, <em>Atari Pong</em>, and <em>Coin Dilemma</em>, which underscores the coupled difficulty of multimodal perception and strategic decision-making.
           </p>
         </div>
       </div>
 
       <div class="container is-max-desktop">
         <div class="table-container" style="width: 80%; margin: 0 auto;">
-          <table class="table academic-table">
+          <table class="table academic-table"> 
             <thead>
-                <tr>
-                    <th rowspan="2">Models</th>
-                    <th rowspan="2">Overall</th>
-                    <th colspan="2">Cooperative</th>
-                    <th colspan="3">Competitive</th>
-                    <th colspan="3">Mixed-Motive</th>
-                </tr>
-                <tr>
-                    <th><i>Hanabi</i></th>
-                    <th><i>Overcooked</i></th>
-                    <th><i>Board</i></th>
-                    <th><i>Poker</i></th>
-                    <th><i>Pong</i></th>
-                    <th><i>Dilemma</i></th>
-                    <th><i>Hunt</i></th>
-                    <th><i>Battle</i></th>
-                </tr>
+              <tr>
+                <th rowspan="2">Models</th>
+                <th rowspan="2">Overall</th>
+                <th colspan="3">Cooperative</th>
+                <th colspan="4">Competitive</th>
+                <th colspan="3">Mixed-Motive</th>
+              </tr>
+              <tr>
+                <th><i>Hanabi</i></th>
+                <th><i>Overcooked</i></th>
+                <th><i>KAZ</i></th>
+                <th><i>Board</i></th>
+                <th><i>Poker</i></th>
+                <th><i>Pong</i></th>
+                <th><i>MPE</i></th>
+                <th><i>Dilemma</i></th>
+                <th><i>Hunt</i></th>
+                <th><i>Battle</i></th>
+              </tr>
             </thead>
             <tbody>
-                <tr class="midrule-below">
-                    <td>Optimal</td>
-                    <td>100.0</td>
-                    <td>100.0</td>
-                    <td>100.0</td>
-                    <td>100.0</td>
-                    <td>100.0</td>
-                    <td>100.0</td>
-                    <td>100.0</td>
-                    <td>100.0</td>
-                    <td>100.0</td>
-                </tr>
-                <tr>
-                    <td>o4-mini</td>
-                    <td class="cell-first">24.3</td>
-                    <td class="cell-second">42.9<sub>&plusmn;30.5</sub></td>
-                    <td class="cell-first">17.0<sub>&plusmn;6.8</sub></td>
-                    <td class="cell-first">30.0<sub>&plusmn;47.0</sub></td>
-                    <td class="cell-second">69.3<sub>&plusmn;32.9</sub></td>
-                    <td class="cell-first">11.2<sub>&plusmn;16.5</sub></td>
-                    <td class="cell-below">-4.6<sub>&plusmn;21.4</sub></td>
-                    <td class="cell-second">24.9<sub>&plusmn;8.2</sub></td>
-                    <td class="cell-third">3.5<sub>&plusmn;5.4</sub></td>
-                </tr>
-                <tr>
-                    <td>doubao-1-5-thinking-pro</td>
-                    <td class="cell-second">21.3</td>
-                    <td class="cell-first">56.7<sub>&plusmn;22.8</sub></td>
-                    <td class="cell-third">10.1<sub>&plusmn;4.7</sub></td>
-                    <td>10.0<sub>&plusmn;21.0</sub></td>
-                    <td class="cell-third">68.5<sub>&plusmn;24.3</sub></td>
-                    <td class="cell-second">2.9<sub>&plusmn;2.5</sub></td>
-                    <td>0.7<sub>&plusmn;3.2</sub></td>
-                    <td>17.2<sub>&plusmn;11.3</sub></td>
-                    <td class="cell-second">4.0<sub>&plusmn;4.8</sub></td>
-                </tr>
-                <tr>
-                    <td>gemini-2.5-flash</td>
-                    <td class="cell-third">20.1</td>
-                    <td class="cell-third">27.1<sub>&plusmn;36.0</sub></td>
-                    <td>8.5<sub>&plusmn;5.4</sub></td>
-                    <td class="cell-second">20.0<sub>&plusmn;25.75</sub></td>
-                    <td>34.7<sub>&plusmn;53.2</sub></td>
-                    <td class="cell-third">1.6<sub>&plusmn;1.9</sub></td>
-                    <td class="cell-second">10.0<sub>&plusmn;25.5</sub></td>
-                    <td class="cell-first">26.2<sub>&plusmn;5.8</sub></td>
-                    <td class="cell-first">32.8<sub>&plusmn;8.5</sub></td>
-                </tr>
-                <tr>
-                    <td>claude-3-7-sonnet</td>
-                    <td>19.5</td>
-                    <td>6.7<sub>&plusmn;21.1</sub></td>
-                    <td class="cell-second">10.1<sub>&plusmn;3.5</sub></td>
-                    <td class="cell-third">20.0<sub>&plusmn;39.75</sub></td>
-                    <td class="cell-first">92.9<sub>&plusmn;22.7</sub></td>
-                    <td class="cell-below">-0.5<sub>&plusmn;1.0</sub></td>
-                    <td>4.6<sub>&plusmn;15.4</sub></td>
-                    <td class="cell-third">19.9<sub>&plusmn;3.5</sub></td>
-                    <td>2.5<sub>&plusmn;4.6</sub></td>
-                </tr>
-                <tr class="midrule-below">
-                    <td>qvq-max</td>
-                    <td class="cell-below">-0.1</td>
-                    <td class="cell-equal">0.0<sub>&plusmn;0.0</sub></td>
-                    <td>2.0<sub>&plusmn;3.4</sub></td>
-                    <td>5.0<sub>&plusmn;31.5</sub></td>
-                    <td class="cell-below">-8.7<sub>&plusmn;37.8</sub></td>
-                    <td>0.4<sub>&plusmn;1.6</sub></td>
-                    <td class="cell-equal">0.0<sub>&plusmn;2.1</sub></td>
-                    <td>0.7<sub>&plusmn;4.5</sub></td>
-                    <td class="cell-below">-0.5<sub>&plusmn;0.0</sub></td>
-                </tr>
-                <tr>
-                    <td>gemini-2.5 w/o thinking</td>
-                    <td>3.0</td>
-                    <td class="cell-equal">0.0<sub>&plusmn;0.0</sub></td>
-                    <td>2.0<sub>&plusmn;4.0</sub></td>
-                    <td class="cell-equal">0.0<sub>&plusmn;0.0</sub></td>
-                    <td>18.2<sub>&plusmn;30.4</sub></td>
-                    <td>1.0<sub>&plusmn;1.4</sub></td>
-                    <td class="cell-below">-0.7<sub>&plusmn;4.3</sub></td>
-                    <td>0.7<sub>&plusmn;8.9</sub></td>
-                    <td>2.5<sub>&plusmn;3.4</sub></td>
-                </tr>
-                <tr>
-                    <td>gpt-4.1</td>
-                    <td>2.8</td>
-                    <td class="cell-equal">0.0<sub>&plusmn;0.0</sub></td>
-                    <td class="cell-below">-0.5<sub>&plusmn;0.0</sub></td>
-                    <td class="cell-equal">0.0<sub>&plusmn;0.0</sub></td>
-                    <td class="cell-below">-7.1<sub>&plusmn;40.4</sub></td>
-                    <td>0.2<sub>&plusmn;1.4</sub></td>
-                    <td class="cell-first">17.8<sub>&plusmn;6.7</sub></td>
-                    <td>11.2<sub>&plusmn;5.6</sub></td>
-                    <td>0.5<sub>&plusmn;2.0</sub></td>
-                </tr>
-                <tr>
-                    <td>qwen-vl-max</td>
-                    <td class="cell-below">-1.0</td>
-                    <td>1.2<sub>&plusmn;2.0</sub></td>
-                    <td class="cell-below">-0.5<sub>&plusmn;0.0</sub></td>
-                    <td class="cell-equal">0.0<sub>&plusmn;0.0</sub></td>
-                    <td class="cell-below">-20.5<sub>&plusmn;56.9</sub></td>
-                    <td class="cell-below">-0.3<sub>&plusmn;1.0</sub></td>
-                    <td class="cell-below">-0.4<sub>&plusmn;2.8</sub></td>
-                    <td>13.2<sub>&plusmn;20.2</sub></td>
-                    <td class="cell-below">-0.5<sub>&plusmn;0.0</sub></td>
-                </tr>
-                <tr>
-                    <td>grok-2-vision</td>
-                    <td class="cell-below">-1.1</td>
-                    <td class="cell-equal">0.0<sub>&plusmn;0.0</sub></td>
-                    <td>1.5<sub>&plusmn;3.3</sub></td>
-                    <td class="cell-equal">0.0<sub>&plusmn;0.0</sub></td>
-                    <td class="cell-below">-11.8<sub>&plusmn;54.2</sub></td>
-                    <td class="cell-below">-0.1<sub>&plusmn;1.5</sub></td>
-                    <td>1.1<sub>&plusmn;7.0</sub></td>
-                    <td class="cell-below">-0.4<sub>&plusmn;5.8</sub></td>
-                    <td>0.5<sub>&plusmn;2.0</sub></td>
-                </tr>
-                <tr>
-                    <td>claude-3-7 w/o thinking</td>
-                    <td class="cell-below">-1.9</td>
-                    <td class="cell-equal">0.0<sub>&pm;0.0</sub></td>
-                    <td>2.0<sub>&pm;4.0</sub></td>
-                    <td>5.0<sub>&pm;31.5</sub></td>
-                    <td class="cell-below">-23.6<sub>&pm;50.9</sub></td>
-                    <td class="cell-below">-0.9<sub>&pm;0.3</sub></td>
-                    <td>1.4<sub>&pm;9.2</sub></td>
-                    <td>0.2<sub>&pm;8.2</sub></td>
-                    <td>1.0<sub>&pm;2.3</sub></td>
-                </tr>
-                <tr class="midrule-below">
-                    <td>doubao-1-5-vision-pro</td>
-                    <td class="cell-below">-4.5</td>
-                    <td class="cell-equal">0.0<sub>&plusmn;0.0</sub></td>
-                    <td class="cell-below">-0.5<sub>&plusmn;0.0</sub></td>
-                    <td class="cell-equal">0.0<sub>&plusmn;0.0</sub></td>
-                    <td class="cell-below">-40.2<sub>&plusmn;57.4</sub></td>
-                    <td class="cell-below">-0.9<sub>&plusmn;0.3</sub></td>
-                    <td class="cell-below">-2.1<sub>&plusmn;5.2</sub></td>
-                    <td>7.8<sub>&plusmn;8.2</sub></td>
-                    <td class="cell-below">-0.5<sub>&plusmn;0.0</sub></td>
-                </tr>
-                <tr>
-                    <td>Qwen2.5-VL-72B-Ins.</td>
-                    <td>1.9</td>
-                    <td>0.8<sub>&plusmn;1.8</sub></td>
-                    <td class="cell-below">-0.5<sub>&plusmn;0.0</sub></td>
-                    <td class="cell-equal">0.0<sub>&plusmn;0.0</sub></td>
-                    <td class="cell-below">-3.2<sub>&plusmn;49.3</sub></td>
-                    <td class="cell-below">-0.8<sub>&plusmn;0.2</sub></td>
-                    <td class="cell-equal">0.0<sub>&plusmn;2.7</sub></td>
-                    <td class="cell-third">19.6<sub>&plusmn;25.7</sub></td>
-                    <td class="cell-below">-0.5<sub>&plusmn;0.0</sub></td>
-                </tr>
-                <tr>
-                    <td>InternVL3-78B</td>
-                    <td>1.0</td>
-                    <td class="cell-equal">0.0<sub>&plusmn;0.0</sub></td>
-                    <td class="cell-equal">0.0<sub>&plusmn;1.5</sub></td>
-                    <td class="cell-equal">0.0<sub>&plusmn;0.0</sub></td>
-                    <td>4.0<sub>&plusmn;62.1</sub></td>
-                    <td class="cell-below">-0.9<sub>&plusmn;0.3</sub></td>
-                    <td class="cell-third">6.8<sub>&plusmn;8.9</sub></td>
-                    <td class="cell-below">-1.8<sub>&plusmn;9.2</sub></td>
-                    <td class="cell-equal">0.0<sub>&plusmn;1.5</sub></td>
-                </tr>
-                <tr class="midrule-below">
-                    <td>Llama-3.2-90B-Vision-Ins.</td>
-                    <td class="cell-below">-4.2</td>
-                    <td class="cell-equal">0.0<sub>&plusmn;0.0</sub></td>
-                    <td>1.5<sub>&plusmn;3.3</sub></td>
-                    <td class="cell-equal">0.0<sub>&plusmn;0.0</sub></td>
-                    <td class="cell-below">-39.4<sub>&plusmn;59.7</sub></td>
-                    <td class="cell-below">-0.9<sub>&plusmn;0.3</sub></td>
-                    <td>0.4<sub>&plusmn;3.4</sub></td>
-                    <td>3.6<sub>&plusmn;4.9</sub></td>
-                    <td>1.0<sub>&plusmn;2.3</sub></td>
-                </tr>
-                <tr>
-                    <td>Random</td>
-                    <td>0.0</td>
-                    <td>0.0</td>
-                    <td>0.0</td>
-                    <td>0.0</td>
-                    <td>0.0</td>
-                    <td>0.0</td>
-                    <td>0.0</td>
-                    <td>0.0</td>
-                    <td>0.0</td>
-                </tr>
+              <tr class="midrule-below">
+                <td>Oracle</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+                <td>100.0</td>
+              </tr>
+              <tr>
+                <td>o3</td>
+                <td class="cell-first">31.4</td>
+                <td class="cell-second">55.8</td>
+                <td class="cell-second">15.6</td>
+                <td class="cell-first">29.5</td>
+                <td class="cell-first">65.0</td>
+                <td class="cell-second">61.8</td>
+                <td class="cell-first">8.6</td>
+                <td>37.2</td>
+                <td class="cell-below">-0.4</td>
+                <td class="cell-second">24.0</td>
+                <td class="cell-second">16.7</td>
+              </tr>
+              <tr>
+                <td>gemini-2.5-pro</td>
+                <td class="cell-second">23.2</td>
+                <td class="cell-third">32.9</td>
+                <td class="cell-first">17.1</td>
+                <td class="cell-third">8.4</td>
+                <td class="cell-second">55.0</td>
+                <td>27.3</td>
+                <td class="cell-second">6.5</td>
+                <td class="cell-second">38.9</td>
+                <td class="cell-below">-9.6</td>
+                <td class="cell-third">21.5</td>
+                <td class="cell-first">33.8</td>
+              </tr>
+              <tr>
+                <td>doubao-1-5-thinking-pro</td>
+                <td class="cell-third">20.3</td>
+                <td class="cell-first">56.7</td>
+                <td>10.1</td>
+                <td class="cell-second">14.1</td>
+                <td>10.0</td>
+                <td class="cell-third">48.5</td>
+                <td class="cell-third">2.9</td>
+                <td>38.5</td>
+                <td>0.7</td>
+                <td>17.2</td>
+                <td>4.0</td>
+              </tr>
+              <tr>
+                <td>claude-3-7-sonnet</td>
+                <td>18.1</td>
+                <td>6.7</td>
+                <td class="cell-third">10.1</td>
+                <td>5.3</td>
+                <td class="cell-third">20.0</td>
+                <td class="cell-first">72.9</td>
+                <td class="cell-below">-0.5</td>
+                <td class="cell-first">39.4</td>
+                <td>4.6</td>
+                <td>19.9</td>
+                <td>2.5</td>
+              </tr>
+              <tr>
+                <td>ui-tars-1-5</td>
+                <td>12.9</td>
+                <td class="cell-equal">0.0</td>
+                <td>2.0</td>
+                <td class="cell-below">-4.7</td>
+                <td>5.0</td>
+                <td>36.4</td>
+                <td class="cell-below">-0.9</td>
+                <td>19.4</td>
+                <td class="cell-first">33.1</td>
+                <td class="cell-first">24.9</td>
+                <td class="cell-second">13.6</td>
+              </tr>
+              <tr class="midrule-below">
+                <td>qvq-max</td>
+                <td>3.6</td>
+                <td class="cell-equal">0.0</td>
+                <td>2.0</td>
+                <td class="cell-below">-1.7</td>
+                <td>5.0</td>
+                <td class="cell-below">-8.7</td>
+                <td>0.4</td>
+                <td class="cell-third">38.6</td>
+                <td class="cell-equal">0.0</td>
+                <td>0.7</td>
+                <td class="cell-below">-0.5</td>
+              </tr>
+              <tr>
+                <td>gpt-4.1</td>
+                <td>4.8</td>
+                <td class="cell-equal">0.0</td>
+                <td class="cell-below">-0.5</td>
+                <td class="cell-below">-5.3</td>
+                <td class="cell-equal">0.0</td>
+                <td class="cell-below">-7.1</td>
+                <td>0.2</td>
+                <td>31.5</td>
+                <td class="cell-second">17.8</td>
+                <td>11.2</td>
+                <td>0.5</td>
+              </tr>
+              <tr>
+                <td>gemini-2.5 w/o thinking</td>
+                <td>4.8</td>
+                <td class="cell-equal">0.0</td>
+                <td>2.0</td>
+                <td class="cell-equal">0.0</td>
+                <td class="cell-equal">0.0</td>
+                <td>18.2</td>
+                <td>1.0</td>
+                <td>23.8</td>
+                <td class="cell-below">-0.7</td>
+                <td>0.7</td>
+                <td>2.5</td>
+              </tr>
+              <tr>
+                <td>qwen-vl-max</td>
+                <td>0.2</td>
+                <td>1.2</td>
+                <td class="cell-below">-0.5</td>
+                <td class="cell-below">-5.3</td>
+                <td class="cell-equal">0.0</td>
+                <td class="cell-below">-20.5</td>
+                <td class="cell-below">-0.3</td>
+                <td>14.4</td>
+                <td class="cell-below">-0.4</td>
+                <td>13.2</td>
+                <td class="cell-below">-0.5</td>
+              </tr>
+              <tr>
+                <td>claude-3-7 w/o thinking</td>
+                <td class="cell-below">-0.6</td>
+                <td class="cell-equal">0.0</td>
+                <td>2.0</td>
+                <td>3.5</td>
+                <td>5.0</td>
+                <td class="cell-below">-23.6</td>
+                <td class="cell-below">-0.9</td>
+                <td>5.6</td>
+                <td>1.4</td>
+                <td>0.2</td>
+                <td>1.0</td>
+              </tr>
+              <tr>
+                <td>doubao-1-5-vision-pro</td>
+                <td class="cell-below">-0.9</td>
+                <td class="cell-equal">0.0</td>
+                <td class="cell-below">-0.5</td>
+                <td class="cell-below">-5.3</td>
+                <td class="cell-equal">0.0</td>
+                <td class="cell-below">-40.2</td>
+                <td class="cell-below">-0.9</td>
+                <td>32.9</td>
+                <td class="cell-below">-2.1</td>
+                <td>7.8</td>
+                <td class="cell-below">-0.5</td>
+              </tr>
+              <tr class="midrule-below">
+                <td>grok-2-vision</td>
+                <td class="cell-below">-6.7</td>
+                <td class="cell-equal">0.0</td>
+                <td>1.5</td>
+                <td class="cell-equal">0.0</td>
+                <td class="cell-equal">0.0</td>
+                <td class="cell-below">-11.8</td>
+                <td class="cell-below">-0.1</td>
+                <td class="cell-below">-58.2</td>
+                <td>1.1</td>
+                <td class="cell-below">-0.4</td>
+                <td>0.5</td>
+              </tr>
+              <tr>
+                <td>Qwen2.5-VL-72B-Ins.</td>
+                <td>3.0</td>
+                <td>0.8</td>
+                <td class="cell-below">-0.5</td>
+                <td class="cell-below">-5.3</td>
+                <td class="cell-equal">0.0</td>
+                <td class="cell-below">-3.1</td>
+                <td class="cell-below">-0.8</td>
+                <td>19.6</td>
+                <td class="cell-equal">0.0</td>
+                <td>19.6</td>
+                <td class="cell-below">-0.5</td>
+              </tr>
+              <tr>
+                <td>InternVL3-78B</td>
+                <td>1.2</td>
+                <td class="cell-equal">0.0</td>
+                <td class="cell-equal">0.0</td>
+                <td class="cell-below">-3.5</td>
+                <td class="cell-equal">0.0</td>
+                <td>4.0</td>
+                <td class="cell-below">-0.9</td>
+                <td>5.9</td>
+                <td class="cell-third">5.0</td>
+                <td class="cell-below">-0.2</td>
+                <td>1.5</td>
+              </tr>
+              <tr class="midrule-below">
+                <td>Llama-3.2-90B-Vision-Ins.</td>
+                <td class="cell-below">-6.3</td>
+                <td class="cell-equal">0.0</td>
+                <td>1.5</td>
+                <td class="cell-equal">0.0</td>
+                <td class="cell-equal">0.0</td>
+                <td class="cell-below">-39.4</td>
+                <td class="cell-below">-0.9</td>
+                <td class="cell-below">-29.6</td>
+                <td>0.4</td>
+                <td>3.6</td>
+                <td>1.0</td>
+              </tr>
+              <tr>
+                <td>Random</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+              </tr>
             </tbody>
           </table>
           <p style="text-align:center; margin-top:1em; font-size:0.85em; color:#555;">
@@ -820,9 +1254,9 @@
             <span style="background-color:#ffcccc; padding:0 3px;">equal to random</span> are highlighted in red.
           </p>
         </div>
-        <div style="width: 80%; border: 1px solid #ccc; background-color: #f2f2f2; padding-top: 12px; padding-right: 15px; padding-bottom: 0px; padding-left: 15px; border-radius: 10px; font-size: 1.0em; margin: 0 auto; line-height: 1.55;">
-          <p><strong style="color: rgb(13, 110, 253);">Finding 2:</strong> Existing VLMs struggle with decision-making in multi-agent environments, leaving a significant performance gap that remains an open challenge for future research.</p>
-        </div>
+        <!-- <div style="width: 70%; border: 1px solid #ccc; background-color: #f2f2f2; padding-top: 12px; padding-right: 15px; padding-bottom: 0px; padding-left: 15px; border-radius: 10px; font-size: 1.0em; margin: 0 auto; line-height: 1.55; text-align: center;">
+          <p>Existing VLMs struggle with decision-making in multi-agent environments.</p>
+        </div> -->
       </div>
   </section>
 
@@ -837,10 +1271,11 @@
         <div class="container is-max-desktop">
           <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
             <p style="text-align:justify; color:rgb(31, 30, 30);">
-              In principle, multimodal observations with both images and texts provide richer information and are expected to give better results. 
-              However, the evaluations on reasoning and decision-making show that environments with inherent visual states, like video games, are especially challenging for VLM agents, indicating their potential incompetence with multimodal observations. 
-              We investigate this by considering text-only observations that replace images with corresponding text descriptions.
+              Although VLMs achieve good performance in multimodal perception, the evaluations on reasoning and decision-making show that environments with rich visual observations are especially challenging for VLM agents.
+              To investigate the influence of multimodal observations, we further evaluate VLMs with text-only observations that replace images with corresponding text descriptions. 
               We select a board game, a card game, and a video game, and evaluate reasoning VLMs for decision-making with multimodal and text-only observations.
+              The decision-making results of reasoning models in Figure 4 show that VLMs achieve slightly better results with text-only observations, but are still far from oracle results. 
+              This indicates that <strong>the weak decision-making performance arises from the coupled challenges of multimodal observation and strategic interactions in multi-agent environments</strong>.
             </p>
           </div>
         </div>
@@ -848,7 +1283,7 @@
         <div class="columns is-centered has-text-centered">
           <div class="column is-8">
             <figure class="table-figure">
-              <img class="figure-image" src="website/img/multimodal_obs.jpg"
+              <img class="figure-image" src="website/img/multimodal_obs.png"
                 alt="Figure 4. Multimodal Input Analysis" style="text-align:center; margin-bottom:1rem; width: 100%;" />
               <figcaption class="figure-caption">
                 <b>Figure 4:</b> Comparison of reasoning VLMs on decision-making with multimodal and text-only observations. The solid and dashed vertical lines represent the average results of two settings.
@@ -856,9 +1291,9 @@
             </figure>
           </div>
         </div>
-        <div style="width: 80%; border: 1px solid #ccc; background-color: #f2f2f2; padding-top: 12px; padding-right: 15px; padding-bottom: 0px; padding-left: 15px; border-radius: 10px; font-size: 1.0em; margin: 0 auto; line-height: 1.55;">
-          <p><strong style="color: rgb(13, 110, 253);">Finding 3:</strong> Existing VLMs can fail to extract visual information and improve strategic reasoning and decision-making performance with multimodal observations.</p>
-        </div>
+        <!-- <div style="width: 70%; border: 1px solid #ccc; background-color: #f2f2f2; padding-top: 12px; padding-right: 15px; padding-bottom: 0px; padding-left: 15px; border-radius: 10px; font-size: 1.0em; margin: 0 auto; line-height: 1.55; text-align: center;">
+          <p>VLMs achieve slightly better results with text-only observations, but are still far from oracle results.</p>
+        </div> -->
 
         <!-- Test-time scaling -->
         <h3 class="title is-4" style="text-align:center; margin-top:2rem; margin-bottom:1.5rem;">Test-Time Scaling</h3>
@@ -867,13 +1302,15 @@
             <p style="text-align:justify; color:rgb(31, 30, 30);">
               We observe in the evaluation results that reasoning models generally achieve better performance than chat models. 
               We further investigate the test-time scaling of VLMs in multi-agent environments by using Chain-of-Thought (CoT) prompting for chat models and comparing their performance with reasoning models and chat models with simple IO prompting.
+              The evaluation results in Figure 5 show that CoT prompting significantly improves chat models' performance in all three environments, while reasoning models still achieve the best results.
+              This demonstrates that <strong>test-time scaling like reasoning and CoT prompting can substantially improve VLMs' performance</strong>.
             </p>
           </div>
         </div>
         <div class="columns is-centered has-text-centered">
           <div class="column is-8">
             <figure class="table-figure">
-              <img class="figure-image" src="website/img/scaling.jpg"
+              <img class="figure-image" src="website/img/reasoning_prompting.png"
                 alt="Figure 5. Social Dilemma Behaviors" style="text-align:center; margin-bottom:1rem; width: 100%;" />
               <figcaption class="figure-caption">
                 <b>Figure 5:</b> Comparison of reasoning VLMs and chat VLMs on decision-making with IO and CoT prompting. The solid, dashed, and dotted vertical lines represent the average results of three settings.
@@ -881,33 +1318,60 @@
             </figure>
           </div>
         </div>
-        <div style="width: 80%; border: 1px solid #ccc; background-color: #f2f2f2; padding-top: 12px; padding-right: 15px; padding-bottom: 0px; padding-left: 15px; border-radius: 10px; font-size: 1.0em; margin: 0 auto; line-height: 1.55;">
-          <p><strong style="color: rgb(13, 110, 253);">Finding 4:</strong> Test-time scaling like reasoning and Chain-of-Thought (CoT) prompting can substantially improve VLMs' performance in multi-agent environments.</p>
-        </div>
+        <!-- <div style="width: 70%; border: 1px solid #ccc; background-color: #f2f2f2; padding-top: 12px; padding-right: 15px; padding-bottom: 0px; padding-left: 15px; border-radius: 10px; font-size: 1.0em; margin: 0 auto; line-height: 1.55; text-align: center;">
+          <p>Test-time scaling like reasoning and Chain-of-Thought (CoT) prompting can substantially improve VLMs' performance in multi-agent environments.</p>
+        </div> -->
 
         <!-- Social behaviors -->
         <h3 class="title is-4" style="text-align:center; margin-top:2rem; margin-bottom:1.5rem;">Social Behaviors</h3>
         <div class="container is-max-desktop">
           <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
             <p style="text-align:justify; color:rgb(31, 30, 30);">
-              Another interesting observation in the evaluation results is that open-source models can achieve comparable results to reasoning models in some mixed-motive games. 
-              We investigate this by visualizing the behaviors of two leading reasoning models and the best-performing open-source models in each social dilemma games.
+              Another interesting observation in the evaluation results is that <strong>open-source models can achieve comparable results to reasoning models in some mixed-motive games</strong>. 
+              We investigate this by visualizing the behaviors of <span style="font-family: monospace, 'Courier New', Courier;">o3</span> and the best-performing open-source models in each social dilemma game.
+              As shown in Figure 6, in <em>Coin Dilemma</em>, <span style="font-family: monospace, 'Courier New', Courier;">o3</span> are better at collecting coins but are also more self-interested, while <span style="font-family: monospace, 'Courier New', Courier;">InterVL3-78B</span> is more inclined to cooperation that leads to a win-win situation.
+              Similar behaviors can be found in <em>Monster Hunt</em>, where the two reasoning models tend to safely eat apples alone, while <span style="font-family: monospace, 'Courier New', Courier;">Qwen2.5-VL-72B-Ins.</span> prefers taking the risk to cooperate and defeat the monster together.
+              We also explicitly prompt <span style="font-family: monospace, 'Courier New', Courier;">o3</span> with self-interested and cooperative personas, and find that different personas significantly change the behaviors and performance of VLMs.
             </p>
           </div>
         </div>
         <div class="columns is-centered has-text-centered">
           <div class="column is-8">
             <figure class="table-figure">
-              <img class="figure-image" src="website/img/behaviors.jpg"
+              <img class="figure-image" src="website/img/social_main_persona_ALL_GAMES.png"
                 alt="Figure 6. Social Dilemma Behaviors" style="text-align:center; margin-bottom:1rem; width: 100%;" />
               <figcaption class="figure-caption">
-                <b>Figure 6:</b> Behaviors of two reasoning models and the best-performing open-source models in mixed-motive social dilemma games.
+                <b>Figure 6:</b> Social behaviors of <span style="font-family: monospace, 'Courier New', Courier;">Qwen2.5-VL-72B-Ins.</span> with different personas and the best-performing open-source model in each social dilemma game.
               </figcaption>
             </figure>
           </div>
         </div>
-        <div style="width: 80%; border: 1px solid #ccc; background-color: #f2f2f2; padding-top: 12px; padding-right: 15px; padding-bottom: 0px; padding-left: 15px; border-radius: 10px; font-size: 1.0em; margin: 0 auto; line-height: 1.55;">
-          <p><strong style="color: rgb(13, 110, 253);">Finding 5:</strong> Open-source VLMs can achieve comparable results to commercial reasoning VLMs in some social dilemma games with prosocial behaviors for mutual benefit.</p>
+        <!-- <div style="width: 70%; border: 1px solid #ccc; background-color: #f2f2f2; padding-top: 12px; padding-right: 15px; padding-bottom: 0px; padding-left: 15px; border-radius: 10px; font-size: 1.0em; margin: 0 auto; line-height: 1.55; text-align: center;">
+          <p>Open-source VLMs can achieve comparable results to commercial reasoning VLMs in some social dilemma games with prosocial behaviors for mutual benefit.</p>
+        </div> -->
+
+        <!-- Human experiments -->
+        <h3 class="title is-4" style="text-align:center; margin-top:2rem; margin-bottom:1.5rem;">Human Experiments</h3>
+        <div class="container is-max-desktop">
+          <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
+            <p style="text-align:justify; color:rgb(31, 30, 30);">
+              We further conduct human experiments in all ten games to better understand the current capability of VLMs in multi-agent environments.
+              To ensure a fair comparison, we let human participants receive the same observations and play games for the same number of times as the VLMs. 
+              As shown in Figure 7, human participants achieve an average overall normalized return of 62.7.
+              For comparison, <span style="font-family: monospace, 'Courier New', Courier;">o3</span> attains an overall return of 31.4, which surpasses 12.9% of human results; <span style="font-family: monospace, 'Courier New', Courier;">gpt-4.1</span> attains an overall return of 4.4, which surpasses only 4.3% of human results.
+            </p>
+          </div>
+        </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-8">
+            <figure class="table-figure">
+              <img class="figure-image" src="website/img/human.png"
+                alt="Figure 7. Human experiment results" style="text-align:center; margin-bottom:1rem; width: 60%;" />
+              <figcaption class="figure-caption">
+                <b>Figure 7:</b> Human experiment results.
+              </figcaption>
+            </figure>
+          </div>
         </div>
 
         <!-- Failure Examples -->
@@ -930,7 +1394,7 @@
             <div class="content has-text-centered" style="margin-bottom: 0rem;">
               <img src="website/img/fail_hanabi.jpg" alt="" width="122%" />
               <figcaption class="figure-caption">
-                <b>Figure 7:</b> Detailed information and VLM response for the <i>Hanabi</i> failure example.
+                <b>Figure 8:</b> Detailed information and VLM response for the <i>Hanabi</i> failure example.
               </figcaption>
             </div>
           </div>
@@ -938,7 +1402,7 @@
             <div class="content has-text-centered" style="margin-bottom: 0rem;">
               <img src="website/img/fail_breakthrough.jpg" alt="" width="122%" />
               <figcaption class="figure-caption">
-                <b>Figure 8:</b> Detailed information and VLM response for the <i>Breakthrough</i> failure example.
+                <b>Figure 9:</b> Detailed information and VLM response for the <i>Breakthrough</i> failure example.
               </figcaption>
             </div>
           </div>
@@ -955,8 +1419,8 @@
       <div class="container is-max-desktop">
         <pre>
           @article{xu2025vs,
-            title={VS-Bench: Evaluating VLMs for Strategic Reasoning and Decision-Making in Multi-Agent Environments},
-            author={Xu, Zelai and Xu, Zhexuan and Yi, Xiangmin and Yuan, Huining and Chen, Xinlei and Wu, Yi and Yu, Chao and Wang, Yu},
+            title={VS-Bench: Evaluating VLMs for Strategic Abilities in Multi-Agent Environments},
+            author={Xu, Zelai and Xu, Zhexuan and Yi, Xiangmin and Yuan, Huining and Guang, Mo and Long, Kaiwen and Chen, Xinlei and Wu, Yi and Yu, Chao and Wang, Yu},
             journal={arXiv preprint arXiv:2506.02387},
             year={2025}
           }
