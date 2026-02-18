@@ -42,24 +42,369 @@
   </script>
   
   <style>
-    
+
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.3); }
       100% { transform: scale(1); }
     }
-    
+
+    /* ── Section scroll offset for sticky nav ── */
+    section[id] {
+      scroll-margin-top: 52px;
+    }
+
+    /* ── Scroll-to-Top Button ── */
+    .scroll-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #aaa;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease,
+                  background 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background: #888;
+      transform: translateY(-4px);
+    }
+
+    /* ── Global Navigation Bar ── */
+    .nav-global {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 52px;
+      background: rgba(251, 251, 253, 0.92);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      z-index: 1001;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .nav-global.hidden {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+
+    .nav-global-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 24px;
+    }
+
+    .nav-global-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-global-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #444;
+      text-decoration: none;
+      padding: 5px 14px;
+      border-radius: 6px;
+      transition: background 0.15s ease, color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .nav-global-links a:hover {
+      background: rgba(0, 0, 0, 0.06);
+      color: #1a1a1a;
+    }
+
+    .nav-global-links a.active {
+      background: rgba(0, 0, 0, 0.08);
+      color: #1a1a1a;
+      font-weight: 600;
+    }
+
+    /* ── Sticky Nav Dropdown ── */
+    .nav-title-wrapper {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .nav-sticky-title {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: background 0.15s ease;
+      cursor: pointer;
+    }
+
+    .nav-sticky-title:hover {
+      background: rgba(0, 0, 0, 0.06);
+      color: #1a1a1a;
+    }
+
+    .nav-title-chevron {
+      font-size: 0.7rem;
+      transition: transform 0.25s ease;
+      color: #888;
+    }
+
+    .nav-title-wrapper:hover .nav-title-chevron,
+    .nav-title-wrapper.open .nav-title-chevron {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 360px;
+      background: rgba(251, 251, 253, 0.98);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      padding: 12px 8px 8px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-title-wrapper:hover .nav-dropdown,
+    .nav-title-wrapper.open .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .nav-dropdown-header {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0 8px 8px;
+    }
+
+    .nav-project-card {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 7px;
+      text-decoration: none;
+      transition: background 0.15s ease;
+    }
+
+    .nav-project-card:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-project-card-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 2px;
+    }
+
+    .nav-project-card-title.active-project {
+      color: #4a90d9;
+    }
+
+    .nav-project-card-desc {
+      font-size: 0.75rem;
+      color: #777;
+      line-height: 1.4;
+    }
+
+    /* ── Sticky Navigation Bar ── */
+    .nav-sticky-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 52px;
+      background: rgba(251, 251, 253, 0.92);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-sticky-bar.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .nav-sticky-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+
+    .nav-sticky-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-sticky-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #444;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.15s ease, color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .nav-sticky-links a:hover,
+    .nav-sticky-links a.active {
+      background: rgba(0, 0, 0, 0.06);
+      color: #1a1a1a;
+    }
+
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: #444;
+      padding: 4px 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-mobile-toggle.active {
+      transform: rotate(90deg);
+    }
+
+    @media (max-width: 768px) {
+      .nav-mobile-toggle {
+        display: block;
+      }
+
+      .nav-sticky-links {
+        display: none;
+        position: absolute;
+        top: 52px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: rgba(251, 251, 253, 0.98);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 8px 0;
+      }
+
+      .nav-sticky-links.mobile-open {
+        display: flex;
+      }
+
+      .nav-sticky-links a {
+        padding: 10px 24px;
+        border-radius: 0;
+        font-size: 0.95rem;
+      }
+    }
+
   </style>
 
 </head>
 
 <body>
 
+  <!-- Global Navigation Bar -->
+  <nav class="nav-global" id="navGlobal">
+    <div class="nav-global-content">
+      <div class="nav-global-links">
+        <a href="https://vs-bench.github.io/" class="active" target="_blank">VS-Bench</a>
+        <a href="https://thu-nics.github.io/MARSHAL/" target="_blank">MARSHAL</a>
+        <a href="https://wideseek-r1.github.io/" target="_blank">WideSeek-R1</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sticky Navigation Bar -->
+  <nav class="nav-sticky-bar" id="navStickyBar">
+    <div class="nav-sticky-content">
+      <div class="nav-title-wrapper" id="navTitleWrapper">
+        <a href="#" class="nav-sticky-title">
+          VS-Bench
+          <i class="fas fa-chevron-down nav-title-chevron"></i>
+        </a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-header">Explore Projects</div>
+          <a href="https://vs-bench.github.io/" class="nav-project-card" target="_blank">
+            <div class="nav-project-card-title active-project">VS-Bench</div>
+            <div class="nav-project-card-desc">Evaluating VLMs for Strategic Abilities in Multi-Agent Environments</div>
+          </a>
+          <a href="https://thu-nics.github.io/MARSHAL/" class="nav-project-card" target="_blank">
+            <div class="nav-project-card-title">MARSHAL</div>
+            <div class="nav-project-card-desc">Incentivizing Multi-Agent Reasoning via Self-Play with Strategic LLMs</div>
+          </a>
+          <a href="https://wideseek-r1.github.io/" class="nav-project-card" target="_blank">
+            <div class="nav-project-card-title">WideSeek-R1</div>
+            <div class="nav-project-card-desc">Exploring Width Scaling for Broad Information Seeking via Multi-Agent Reinforcement Learning</div>
+          </a>
+        </div>
+      </div>
+      <div class="nav-sticky-links" id="navStickyLinks">
+        <a href="#abstract">Abstract</a>
+        <a href="#overview">Overview</a>
+        <a href="#environments">Environments</a>
+        <a href="#benchmark-results">Results</a>
+        <a href="#analysis">Analysis</a>
+        <a href="#BibTeX">BibTeX</a>
+      </div>
+      <button class="nav-mobile-toggle" id="navMobileToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
   <section class="hero">
-    <div class="hero-body">
+    <div class="hero-body" style="padding-top: 5rem;">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
-          <div class="column has-text-centered">
+          <div class="column has-text-centered" style="max-width: 80%; margin: 0 auto;">
 
 
             <h1 class="title is-1 publication-title">VS-Bench: Evaluating VLMs for Strategic Abilities in Multi-Agent Environments</h1>
@@ -69,19 +414,19 @@
                 <a href="https://nicsefc.ee.tsinghua.edu.cn/people/ZelaiXu" target="_blank">Zelai Xu</a><sup>1*</sup>,
               </span>
               <span class="author-block">
-                <a href="" target="_blank">Zhexuan Xu</a><sup>2*</sup>,
+                Zhexuan Xu<sup>2*</sup>,
               </span>
               <span class="author-block">
-                <a href="" target="_blank">Xiangmin Yi</a><sup>1</sup>,
+                Xiangmin Yi<sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="" target="_blank">Huining Yuan</a><sup>1</sup>,
+                Huining Yuan<sup>1</sup>,
               </span><br>
               <span class="author-block">
-                <a href="" target="_blank">Mo Guang</a><sup>3</sup>,
+                Mo Guang<sup>3</sup>,
               </span>
               <span class="author-block">
-                <a href="" target="_blank">Kaiwen Long</a><sup>3</sup>,
+                Kaiwen Long<sup>3</sup>,
               </span>
               <span class="author-block">
                 <a href="https://chen-xinlei.com/" target="_blank">Xinlei Chen</a><sup>1</sup>,
@@ -97,7 +442,7 @@
               </span>
             </div>
             
-            <div class="is-size-5 publication-authors" style="margin-top:1em;">
+            <div class="is-size-5 publication-authors" style="margin-top:1em; color:#666;">
               <span class="author-block"><sup>1</sup>Tsinghua University,</span>
               <span class="author-block"><sup>2</sup>University of Science and Technology of China,</span><br>
               <span class="author-block"><sup>3</sup>Li Auto Inc.,</span>
@@ -106,7 +451,7 @@
             </div>
             
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>*</sup>Equal contribution.</span><br>
+              <span class="author-block"><sup>*</sup>Equal contribution.</span>&nbsp;&nbsp;
               <span class="author-block"><sup>†</sup>Corresponding authors.</span>
             </div>
 
@@ -146,33 +491,16 @@
   </section>
 
 
-  <!-- Overview Section -->
-  <section class="section" id="overview" style="padding-top:1.5rem;">
-      <h2 class="title is-3" style="text-align:center; margin-bottom:2rem;">Overview</h2>
-
-      <!-- Figure 1 -->
-      <div class="container is-max-desktop">
-        <div class="has-text-centered">
-          <figure class="table-figure" style="width: 80%; margin-left: auto; margin-right: auto;">
-            <img class="figure-image" src="website/img/overview.png" alt="Figure 1. Overview of VS-Bench." />
-            <figcaption class="figure-caption">
-              <b>Figure 1:</b> Overview of VS-Bench, a multimodal benchmark for evaluating VLMs in multi-agent environments.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-  </section>
-
   <section class="section" id="abstract" style="padding-top:1.5rem;">
       <h2 class="title is-3" style="text-align:center; margin-bottom:2rem;">Abstract</h2>
       <div class="container is-max-desktop">
-        <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
+        <div class="content has-text-justified" style="width: 65%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
           <p style="text-align:justify; color:rgb(31, 30, 30);">
             Recent advancements in Vision Language Models (VLMs) have expanded their capabilities to interactive agent tasks, yet existing benchmarks remain limited to single-agent or text-only environments.
             In contrast, real-world scenarios often involve multiple agents interacting within rich visual and textual contexts, posing challenges with both multimodal observations and strategic interactions.
             To bridge this gap, we introduce <strong>Visual Strategic Bench (VS-Bench)</strong>, a multimodal benchmark that evaluates VLMs for strategic abilities in multi-agent environments.
             VS-Bench comprises ten vision-grounded environments that cover cooperative, competitive, and mixed-motive interactions.
-            The performance of VLM agents is evaluated across three dimensions: <strong>perception</strong> measured by element recognition accuracy; <strong>strategic reasoning</strong> measured by next-action prediction accuracy; and <strong>decision-making</strong> measured by normalized episode return. 
+            The performance of VLM agents is evaluated across three dimensions: <strong>perception</strong> measured by element recognition accuracy; <strong>strategic reasoning</strong> measured by next-action prediction accuracy; and <strong>decision-making</strong> measured by normalized episode return.
             Extensive experiments on fifteen leading VLMs show that, although current models exhibit strong perception abilities, there remains a significant gap to optimal performance in reasoning and decision-making, with the best-performing model attaining 46.6% prediction accuracy and 31.4% normalized return.
             We further analyze the key factors influencing performance, conduct human experiments, and examine failure modes to provide a deeper understanding of VLMs' strategic abilities.
             By standardizing the evaluation and highlighting the limitations of existing models, we envision VS-Bench as a foundation for future research on strategic multimodal agents.
@@ -182,11 +510,11 @@
       <!-- Figure 2-3 -->
       <div class="container is-max-desktop">
       <!-- <div class="container" style="width: 70%; margin: 0 auto;"> -->
-        <div class="columns is-centered is-multiline" style="width: 80%; margin: 0 auto; margin-top: 1rem; margin-bottom:1rem;">
+        <div class="columns is-centered is-multiline" style="width: 65%; margin: 0 auto; margin-top: 1rem; margin-bottom:1rem;">
           <div class="column" style="width: 40%;">
             <div class="has-text-centered">
               <figure class="table-figure">
-                <img class="figure-image" src="website/img/tldr_reasoning.png" 
+                <img class="figure-image" src="website/img/tldr_reasoning.png"
                     alt="Figure 2. Strategic Reasoning Results" />
                 <figcaption class="figure-caption">
                   <b>Figure 2:</b> Evaluation results on strategic reasoning.
@@ -194,7 +522,7 @@
               </figure>
             </div>
           </div>
-          
+
           <div class="column" style="width: 40%;">
             <div class="has-text-centered">
               <figure class="table-figure">
@@ -211,6 +539,23 @@
 
   </section>
 
+  <!-- Overview Section -->
+  <section class="section" id="overview" style="padding-top:1.5rem;">
+      <h2 class="title is-3" style="text-align:center; margin-bottom:2rem;">Overview</h2>
+
+      <!-- Figure 1 -->
+      <div class="container is-max-desktop">
+        <div class="has-text-centered">
+          <figure class="table-figure" style="width: 65%; margin-left: auto; margin-right: auto;">
+            <img class="figure-image" src="website/img/overview.png" alt="Figure 1. Overview of VS-Bench." />
+            <figcaption class="figure-caption">
+              <b>Figure 1:</b> Overview of VS-Bench, a multimodal benchmark for evaluating VLMs in multi-agent environments.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+  </section>
+
 
   <!-- Environments Section -->
   <section class="section" id="environments" style="padding-top:1.5rem;">
@@ -218,7 +563,7 @@
       <!-- Cooperative Games -->
       <h3 class="title is-4" style="text-align:center; margin-top:2rem; margin-bottom:2rem;">Cooperative Games</h3>
       <div class="container is-max-desktop"> 
-        <div class="columns is-centered is-multiline" style="width: 80%; margin: 0 auto;">
+        <div class="columns is-centered is-multiline" style="width: 65%; margin: 0 auto;">
           <div class="column">
             <div class="has-text-centered">
               <div class="video-outer-wrapper">
@@ -246,7 +591,7 @@
           </div>
         </div>
 
-        <div class="columns is-centered is-multiline" style="width: 80%; margin: 0 auto;">
+        <div class="columns is-centered is-multiline" style="width: 65%; margin: 0 auto;">
           <div class="column">
             <div class="has-text-centered">
               <div class="video-outer-wrapper">
@@ -277,7 +622,7 @@
       
       <h3 class="title is-4" style="text-align:center; margin-top:2rem; margin-bottom:2rem;">Competitive Games</h3>
       <div class="container is-max-desktop"> 
-        <div class="columns is-centered is-multiline" style="width: 80%; margin: 0 auto;">
+        <div class="columns is-centered is-multiline" style="width: 65%; margin: 0 auto;">
           <div class="column">
             <div class="has-text-centered">
               <div class="video-outer-wrapper">
@@ -305,7 +650,7 @@
           </div>
           
 
-        <div class="columns is-centered is-multiline" style="width: 80%; margin: 0 auto;">
+        <div class="columns is-centered is-multiline" style="width: 65%; margin: 0 auto;">
           <div class="column">
             <div class="has-text-centered">
               <div class="video-outer-wrapper">
@@ -336,7 +681,7 @@
       
       <h3 class="title is-4" style="text-align:center; margin-top:2rem; margin-bottom:2rem;">Mixed-Motive Games</h3>
       <div class="container is-max-desktop"> 
-        <div class="columns is-centered is-multiline" style="width: 80%; margin: 0 auto;">
+        <div class="columns is-centered is-multiline" style="width: 65%; margin: 0 auto;">
           <div class="column">
             <div class="has-text-centered">
               
@@ -378,12 +723,12 @@
 
 
   <!-- Benchmark Results Section -->
-  <section class="section" id="benchmark results" style="padding-top:1.5rem;">
+  <section class="section" id="benchmark-results" style="padding-top:1.5rem;">
       <h2 class="title is-3" style="text-align:center; margin-top:-0.5rem; margin-bottom:2rem;">Benchmark Results</h2>
       <!-- Perception Results -->
       <h3 class="title is-4" style="text-align:center; margin-top:1rem; margin-bottom:2rem;">Perception</h3>
       <div class="container is-max-desktop">
-        <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
+        <div class="content has-text-justified" style="width: 65%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
           <p style="text-align:justify; color:rgb(31, 30, 30);">
             <strong>Existing VLMs show competent perception ability.</strong>
             The evaluation results in Table 1 show that current VLMs achieve high performance in perception of key elements. 
@@ -395,7 +740,7 @@
       </div>
 
       <div class="container is-max-desktop">
-        <div class="table-container" style="width: 80%; margin: 0 auto;">
+        <div class="table-container" style="width: 65%; margin: 0 auto;">
           <table class="table academic-table"> 
             <thead>
               <tr>
@@ -674,7 +1019,7 @@
       <!-- Strategic Reasoning Results -->
       <h3 class="title is-4" style="text-align:center; margin-top:1rem; margin-bottom:2rem;">Strategic Reasoning</h3>
       <div class="container is-max-desktop">
-        <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
+        <div class="content has-text-justified" style="width: 65%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
           <p style="text-align:justify; color:rgb(31, 30, 30);">
             <strong>Existing VLMs exhibit preliminary strategic reasoning ability but are still far from oracle performance.</strong>
             The evaluation results in Figure 2 and Table 2 show that current VLMs show basic strategic reasoning ability by surpassing random agents in overall prediction accuracy, yet they still lag behind the oracle results by a noticeable margin.
@@ -688,7 +1033,7 @@
       </div>
 
       <div class="container is-max-desktop">
-        <div class="table-container" style="width: 80%; margin: 0 auto;">
+        <div class="table-container" style="width: 65%; margin: 0 auto;">
           <table class="table academic-table"> 
             <thead>
               <tr>
@@ -728,7 +1073,7 @@
               </tr>
               <tr>
                 <td>o3</td>
-                <td>46.6</td>
+                <td class="cell-first">46.6</td>
                 <td class="cell-first">61.2</td>
                 <td class="cell-first">40.5</td>
                 <td>30.8</td>
@@ -742,7 +1087,7 @@
               </tr>
               <tr>
                 <td>claude-3-7-sonnet</td>
-                <td>40.4</td>
+                <td class="cell-second">40.4</td>
                 <td class="cell-third">39.0</td>
                 <td>26.0</td>
                 <td>29.0</td>
@@ -756,7 +1101,7 @@
               </tr>
               <tr>
                 <td>gemini-2.5-pro</td>
-                <td>39.6</td>
+                <td class="cell-third">39.6</td>
                 <td class="cell-second">51.2</td>
                 <td>22.0</td>
                 <td>28.8</td>
@@ -968,7 +1313,7 @@
       <!-- Decision Making Results -->
       <h3 class="title is-4" style="text-align:center; margin-top:2rem; margin-bottom:1.5rem;">Decision-Making</h3>
       <div class="container is-max-desktop">
-        <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
+        <div class="content has-text-justified" style="width: 65%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
           <p style="text-align:justify; color:rgb(31, 30, 30);">
             <strong>Existing VLMs struggle with decision-making in multi-agent environments.</strong>
             The evaluation results in Figure  and Table 3 show that current VLMs have limited decision-making ability in multi-agent environments, highlighting a significant gap between existing models and oracle performance.
@@ -981,7 +1326,7 @@
       </div>
 
       <div class="container is-max-desktop">
-        <div class="table-container" style="width: 80%; margin: 0 auto;">
+        <div class="table-container" style="width: 65%; margin: 0 auto;">
           <table class="table academic-table"> 
             <thead>
               <tr>
@@ -1269,7 +1614,7 @@
         <!-- Multimodal observations -->
         <h3 class="title is-4" style="text-align:center; margin-top:2rem; margin-bottom:1.5rem;">Multimodal Observations</h3>
         <div class="container is-max-desktop">
-          <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
+          <div class="content has-text-justified" style="width: 65%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
             <p style="text-align:justify; color:rgb(31, 30, 30);">
               Although VLMs achieve good performance in multimodal perception, the evaluations on reasoning and decision-making show that environments with rich visual observations are especially challenging for VLM agents.
               To investigate the influence of multimodal observations, we further evaluate VLMs with text-only observations that replace images with corresponding text descriptions. 
@@ -1298,7 +1643,7 @@
         <!-- Test-time scaling -->
         <h3 class="title is-4" style="text-align:center; margin-top:2rem; margin-bottom:1.5rem;">Test-Time Scaling</h3>
         <div class="container is-max-desktop">
-          <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
+          <div class="content has-text-justified" style="width: 65%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
             <p style="text-align:justify; color:rgb(31, 30, 30);">
               We observe in the evaluation results that reasoning models generally achieve better performance than chat models. 
               We further investigate the test-time scaling of VLMs in multi-agent environments by using Chain-of-Thought (CoT) prompting for chat models and comparing their performance with reasoning models and chat models with simple IO prompting.
@@ -1325,7 +1670,7 @@
         <!-- Social behaviors -->
         <h3 class="title is-4" style="text-align:center; margin-top:2rem; margin-bottom:1.5rem;">Social Behaviors</h3>
         <div class="container is-max-desktop">
-          <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
+          <div class="content has-text-justified" style="width: 65%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
             <p style="text-align:justify; color:rgb(31, 30, 30);">
               Another interesting observation in the evaluation results is that <strong>open-source models can achieve comparable results to reasoning models in some mixed-motive games</strong>. 
               We investigate this by visualizing the behaviors of <span style="font-family: monospace, 'Courier New', Courier;">o3</span> and the best-performing open-source models in each social dilemma game.
@@ -1353,7 +1698,7 @@
         <!-- Human experiments -->
         <h3 class="title is-4" style="text-align:center; margin-top:2rem; margin-bottom:1.5rem;">Human Experiments</h3>
         <div class="container is-max-desktop">
-          <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
+          <div class="content has-text-justified" style="width: 65%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
             <p style="text-align:justify; color:rgb(31, 30, 30);">
               We further conduct human experiments in all ten games to better understand the current capability of VLMs in multi-agent environments.
               To ensure a fair comparison, we let human participants receive the same observations and play games for the same number of times as the VLMs. 
@@ -1377,7 +1722,7 @@
         <!-- Failure Examples -->
         <h3 class="title is-4" style="text-align:center; margin-top:2rem; margin-bottom:1.5rem;">Failure Examples</h3>
         <div class="container is-max-desktop">
-          <div class="content has-text-justified" style="width: 80%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
+          <div class="content has-text-justified" style="width: 65%; font-size: 1.0em; margin: 0 auto; line-height: 1.55; margin-bottom: 1.5rem;">
             <p style="text-align:justify; color:rgb(31, 30, 30);">
               To understand why VLMs underperform in multi-agent environments, we conduct a qualitative analysis of their failure cases.
               In strategic reasoning, two common failure cases are ignoring history and private information. 
@@ -1389,8 +1734,8 @@
           </div>
         </div>
 
-        <div id="results-carousel" class="carousel results-carousel" style="width: 80%; margin: auto;" data-autoplay="true" data-pagination="false">
-          <div class="box mx-auto my-4" style="width: 80%;">
+        <div id="results-carousel" class="carousel results-carousel" style="width: 65%; margin: auto;" data-autoplay="true" data-pagination="false">
+          <div class="box mx-auto my-4" style="width: 65%;">
             <div class="content has-text-centered" style="margin-bottom: 0rem;">
               <img src="website/img/fail_hanabi.jpg" alt="" width="122%" />
               <figcaption class="figure-caption">
@@ -1398,7 +1743,7 @@
               </figcaption>
             </div>
           </div>
-          <div class="box mx-auto my-4" style="width: 80%;">
+          <div class="box mx-auto my-4" style="width: 65%;">
             <div class="content has-text-centered" style="margin-bottom: 0rem;">
               <img src="website/img/fail_breakthrough.jpg" alt="" width="122%" />
               <figcaption class="figure-caption">
@@ -1414,16 +1759,16 @@
 
   <!-- BibTeX Section -->
   <section class="section" id="BibTeX" style="padding-top:1.5rem;">
-    <div class="container is-max-desktop content" style="width: 80%; margin: 0 auto;">
+    <div class="container is-max-desktop content" style="width: 65%; margin: 0 auto;">
       <h2 class="title is-3" style="text-align:center;">BibTeX</h2>
       <div class="container is-max-desktop">
         <pre>
-          @article{xu2025vs,
-            title={VS-Bench: Evaluating VLMs for Strategic Abilities in Multi-Agent Environments},
-            author={Xu, Zelai and Xu, Zhexuan and Yi, Xiangmin and Yuan, Huining and Guang, Mo and Long, Kaiwen and Chen, Xinlei and Wu, Yi and Yu, Chao and Wang, Yu},
-            journal={arXiv preprint arXiv:2506.02387},
-            year={2025}
-          }
+@article{xu2025vs,
+  title={VS-Bench: Evaluating VLMs for Strategic Abilities in Multi-Agent Environments},
+  author={Xu, Zelai and Xu, Zhexuan and Yi, Xiangmin and Yuan, Huining and Guang, Mo and Long, Kaiwen and Chen, Xinlei and Wu, Yi and Yu, Chao and Wang, Yu},
+  journal={arXiv preprint arXiv:2506.02387},
+  year={2025}
+}
         </pre>
       </div>
     </div>
@@ -1446,6 +1791,78 @@
     </div>
   </footer>
 
+
+  <!-- Scroll-to-Top Button -->
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script>
+    // Global nav: hide after scrolling past hero section
+    const navGlobal = document.getElementById('navGlobal');
+
+    // Sticky nav: show after scrolling past hero section
+    const navBar = document.getElementById('navStickyBar');
+    const hero = document.querySelector('.hero');
+
+    function updateNav() {
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+      if (window.scrollY > heroBottom - 60) {
+        navBar.classList.add('visible');
+        navGlobal.classList.add('hidden');
+      } else {
+        navBar.classList.remove('visible');
+        navGlobal.classList.remove('hidden');
+      }
+
+      // Highlight active section
+      const sections = ['abstract', 'overview', 'environments', 'benchmark-results', 'analysis', 'BibTeX'];
+      const links = document.querySelectorAll('.nav-sticky-links a');
+      let current = '';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 80) {
+          current = id;
+        }
+      });
+      links.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }
+
+    // Scroll-to-top button visibility
+    const scrollTopBtn = document.getElementById('scrollTop');
+    function updateScrollTop() {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+    }
+
+    window.addEventListener('scroll', updateNav, { passive: true });
+    window.addEventListener('scroll', updateScrollTop, { passive: true });
+
+    // Dropdown: close when clicking outside
+    document.addEventListener('click', function(e) {
+      const wrapper = document.getElementById('navTitleWrapper');
+      if (wrapper && !wrapper.contains(e.target)) {
+        wrapper.classList.remove('open');
+      }
+    });
+
+    // Mobile toggle
+    const mobileToggle = document.getElementById('navMobileToggle');
+    const navLinks = document.getElementById('navStickyLinks');
+    mobileToggle.addEventListener('click', function () {
+      this.classList.toggle('active');
+      navLinks.classList.toggle('mobile-open');
+    });
+
+    // Close mobile menu on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileToggle.classList.remove('active');
+        navLinks.classList.remove('mobile-open');
+      });
+    });
+  </script>
 
 </body>
 
